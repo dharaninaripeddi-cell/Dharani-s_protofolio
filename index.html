@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dharani | ShadowFox Intern</title>
 
-    <!-- Font Awesome -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        /* ================= GLOBAL ================= */
+        
         * {
             margin: 0;
             padding: 0;
@@ -29,7 +29,7 @@
             overflow-x: hidden;
         }
 
-        /* Dark Overlay for better readability */
+    
         body::before {
             content: "";
             position: fixed;
@@ -67,8 +67,6 @@
             line-height: 1.8;
             color: #d1d5db;
         }
-
-        /* ================= NAVBAR ================= */
         nav {
             position: fixed;
             top: 0;
@@ -108,8 +106,6 @@
         nav ul li a:hover {
             color: #00e6e6;
         }
-
-        /* ================= HERO ================= */
         .hero {
             height: 100vh;
             display: flex;
@@ -133,8 +129,6 @@
             min-height: 40px;
             font-weight: 300;
         }
-
-        /* ================= GLASS CARDS ================= */
         .card, .box {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -162,8 +156,6 @@
         .box i {
             font-size: 1.2rem;
         }
-
-        /* ================= SKILLS ================= */
         .skill {
             margin: 25px 0;
         }
@@ -188,15 +180,11 @@
             width: 0;
             transition: width 2s ease-in-out;
         }
-
-        /* ================= GRID ================= */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-
-        /* ================= BUTTONS ================= */
         .resume-btn {
             display: inline-flex;
             align-items: center;
@@ -216,8 +204,6 @@
             background: #ffffff;
             transform: scale(1.05);
         }
-
-        /* ================= CONTACT ================= */
         .contact-icons {
             display: flex;
             gap: 20px;
@@ -250,8 +236,6 @@
             color: rgba(255, 255, 255, 0.5);
             font-size: 0.9rem;
         }
-
-        /* ================= ANIMATIONS ================= */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -265,10 +249,9 @@
             animation: fadeUp 0.8s forwards;
         }
 
-        /* ================= RESPONSIVE ================= */
         @media(max-width: 768px) {
             nav { padding: 15px 25px; }
-            nav ul { display: none; } /* Could add a hamburger menu here */
+            nav ul { display: none; }
             .hero h1 { font-size: 2.8rem; }
             section { padding: 80px 5%; }
         }
@@ -276,7 +259,6 @@
 </head>
 <body>
 
-<!-- ================= NAVBAR ================= -->
 <nav>
     <h1>DHARANI<span style="color:#fff">.</span></h1>
     <ul>
@@ -289,7 +271,6 @@
     </ul>
 </nav>
 
-<!-- ================= HERO ================= -->
 <section class="hero" id="home">
     <div>
         <p style="color: #00e6e6; font-weight: 700; letter-spacing: 4px; margin-bottom: 10px;">HELLO, I'M</p>
@@ -297,8 +278,6 @@
         <div class="typing" id="typing"></div>
     </div>
 </section>
-
-<!-- ================= ABOUT ================= -->
 <section id="about" class="animate-on-scroll">
     <div class="card">
         <h2>About Me</h2>
@@ -312,8 +291,6 @@
         </p>
     </div>
 </section>
-
-<!-- ================= SKILLS ================= -->
 <section id="skills" class="animate-on-scroll">
     <h2>My Expertise</h2>
     <div class="grid">
@@ -345,7 +322,6 @@
     </div>
 </section>
 
-<!-- ================= CERTIFICATIONS ================= -->
 <section id="certifications" class="animate-on-scroll">
     <h2>Certifications & Awards</h2>
     <div class="grid">
@@ -368,7 +344,6 @@
     </div>
 </section>
 
-<!-- ================= PROJECTS ================= -->
 <section id="projects" class="animate-on-scroll">
     <h2>Selected Projects</h2>
     <div class="grid">
@@ -389,8 +364,6 @@
         </div>
     </div>
 </section>
-
-<!-- ================= INTERNSHIP ================= -->
 <section id="internship" class="animate-on-scroll">
     <div class="card" style="border-left: 5px solid #00e6e6;">
         <h4 style="color: #00e6e6; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Professional Experience</h4>
@@ -403,7 +376,6 @@
     </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
 <section id="contact" class="animate-on-scroll">
     <div class="grid">
         <div>
@@ -423,9 +395,8 @@
     <p>© 2026 Naripeddi Dharani | Designed for ShadowFox Internship</p>
 </footer>
 
-<!-- ================= JAVASCRIPT ================= -->
 <script>
-    // Typing Animation
+    
     const roles = ["B.Tech IT Student", "ShadowFox Intern", "Aspiring Software Developer"];
     let count = 0; let index = 0; let currentText = ""; let letter = "";
 
@@ -444,13 +415,12 @@
         }
     })();
 
-    // Scroll Reveal Animation
+    
     const observerOptions = { threshold: 0.2 };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // Trigger progress bars if they exist in this section
                 const bars = entry.target.querySelectorAll('.progress-fill');
                 bars.forEach(bar => bar.style.width = bar.getAttribute('data-level'));
             }
@@ -465,3 +435,4 @@
 </body>
 
 </html>
+
