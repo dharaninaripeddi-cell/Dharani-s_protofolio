@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dharani | ShadowFox Intern</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* ================= GLOBAL ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: radial-gradient(circle at top right, #1a2a6c, #b21f1f, #fdbb2d);
+            background-attachment: fixed;
+            background-size: cover;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Dark Overlay for better readability */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 15, 30, 0.85);
+            z-index: -1;
+        }
+
+        section {
+            padding: 100px 10%;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #00e6e6;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2::after {
+            content: "";
+            height: 2px;
+            flex-grow: 1;
+            background: linear-gradient(to right, #00e6e6, transparent);
+        }
+
+        p {
+            line-height: 1.8;
+            color: #d1d5db;
+        }
+
+        /* ================= NAVBAR ================= */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            background: rgba(10, 15, 30, 0.8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        nav h1 {
+            color: #00e6e6;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        nav ul li a:hover {
+            color: #00e6e6;
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ffffff, #00e6e6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .typing {
+            font-size: 1.8rem;
+            color: #00e6e6;
+            min-height: 40px;
+            font-weight: 300;
+        }
+
+        /* ================= GLASS CARDS ================= */
+        .card, .box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .box:hover {
+            transform: translateY(-12px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #00e6e6;
+            box-shadow: 0 15px 40px rgba(0, 230, 230, 0.15);
+        }
+
+        .box h3 {
+            margin-bottom: 15px;
+            color: #00e6e6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .box i {
+            font-size: 1.2rem;
+        }
+
+        /* ================= SKILLS ================= */
+        .skill {
+            margin: 25px 0;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00e6e6, #008080);
+            width: 0;
+            transition: width 2s ease-in-out;
+        }
+
+        /* ================= GRID ================= */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* ================= BUTTONS ================= */
+        .resume-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 15px 35px;
+            background: #00e6e6;
+            color: #0b0f1e;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 230, 230, 0.3);
+        }
+
+        .resume-btn:hover {
+            background: #ffffff;
+            transform: scale(1.05);
+        }
+
+        /* ================= CONTACT ================= */
+        .contact-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .contact-icons a {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: #00e6e6;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-icons a:hover {
+            background: #00e6e6;
+            color: #000;
+            transform: rotate(360deg);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.4);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* ================= ANIMATIONS ================= */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+        }
+
+        .visible {
+            animation: fadeUp 0.8s forwards;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media(max-width: 768px) {
+            nav { padding: 15px 25px; }
+            nav ul { display: none; } /* Could add a hamburger menu here */
+            .hero h1 { font-size: 2.8rem; }
+            section { padding: 80px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav>
+    <h1>DHARANI<span style="color:#fff">.</span></h1>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+    <div>
+        <p style="color: #00e6e6; font-weight: 700; letter-spacing: 4px; margin-bottom: 10px;">HELLO, I'M</p>
+        <h1>Naripeddi Dharani</h1>
+        <div class="typing" id="typing"></div>
+    </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="animate-on-scroll">
+    <div class="card">
+        <h2>About Me</h2>
+        <p>
+            I am a motivated <strong>B.Tech Information Technology</strong> student at <strong>Vishnu Institute of Technology</strong>
+            with a strong academic record (<strong>CGPA: 9.65</strong>). My expertise lies in building efficient software solutions 
+            and bridging the gap between design and code.
+            <br><br>
+            Currently, as a <strong>ShadowFox Intern</strong>, I am refining my frontend development skills and 
+            diving deep into problem-solving through real-world industry tasks.
+        </p>
+    </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="animate-on-scroll">
+    <h2>My Expertise</h2>
+    <div class="grid">
+        <div class="card">
+            <div class="skill">
+                <div class="skill-info"><span>Frontend Development</span><span>90%</span></div>
+                <div class="progress-bar"><div class="progress-fill" data-level="90%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-info"><span>Python & Java</span><span>85%</span></div>
+                <div class="progress-bar"><div class="progress-fill" data-level="85%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-info"><span>Data Structures (DSA)</span><span>80%</span></div>
+                <div class="progress-bar"><div class="progress-fill" data-level="80%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-info"><span>MySQL & Database</span><span>75%</span></div>
+                <div class="progress-bar"><div class="progress-fill" data-level="75%"></div></div>
+            </div>
+        </div>
+        <div class="card" style="display: flex; align-items: center; justify-content: center; text-align: center;">
+            <div>
+                <i class="fas fa-code-branch" style="font-size: 3rem; color: #00e6e6; margin-bottom: 20px;"></i>
+                <h3>Version Control</h3>
+                <p>Expertise in Git, GitHub, and collaborative development workflows in VS Code.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CERTIFICATIONS ================= -->
+<section id="certifications" class="animate-on-scroll">
+    <h2>Certifications & Awards</h2>
+    <div class="grid">
+        <div class="box">
+            <h3><i class="fas fa-database"></i> HackerRank SQL</h3>
+            <p>Validated expertise in SQL fundamentals, including complex queries, joins, and database schema management.</p>
+        </div>
+        <div class="box">
+            <h3><i class="fab fa-python"></i> GFG Python</h3>
+            <p>Comprehensive certification from GeeksforGeeks covering advanced Python programming and algorithmic logic.</p>
+        </div>
+        <div class="box">
+            <h3><i class="fas fa-lightbulb"></i> Smart India Hackathon</h3>
+            <p>National-level participation focusing on innovative problem-solving for governance and social challenges.</p>
+        </div>
+        <div class="box">
+            <h3><i class="fas fa-laptop-code"></i> Competitive Coding</h3>
+            <p>Consistent performer on LeetCode and HackerRank, focusing on optimizing space and time complexity.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects" class="animate-on-scroll">
+    <h2>Selected Projects</h2>
+    <div class="grid">
+        <div class="box">
+            <i class="fas fa-wallet" style="font-size: 2rem; color: #00e6e6; margin-bottom: 15px;"></i>
+            <h3>Expense Tracker</h3>
+            <p>A smart Python application designed to help users categorize spending and visualize financial health.</p>
+        </div>
+        <div class="box">
+            <i class="fas fa-language" style="font-size: 2rem; color: #00e6e6; margin-bottom: 15px;"></i>
+            <h3>Web Translator</h3>
+            <p>Built a responsive multi-language translator using HTML/JS that interacts with translation APIs.</p>
+        </div>
+        <div class="box">
+            <i class="fas fa-robot" style="font-size: 2rem; color: #00e6e6; margin-bottom: 15px;"></i>
+            <h3>College AI Chatbot</h3>
+            <p>Leveraged NLP and Flask to create an interactive bot that streamlines college-related information retrieval.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= INTERNSHIP ================= -->
+<section id="internship" class="animate-on-scroll">
+    <div class="card" style="border-left: 5px solid #00e6e6;">
+        <h4 style="color: #00e6e6; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Professional Experience</h4>
+        <h2 style="margin-top: 10px;">ShadowFox Internship</h2>
+        <p>
+            As part of the ShadowFox technical team, I am actively engaged in developing responsive UI components 
+            and solving algorithmic challenges. This role involves strict adherence to industry best practices 
+            and collaborative development using modern tech stacks.
+        </p>
+    </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="animate-on-scroll">
+    <div class="grid">
+        <div>
+            <h2>Get In Touch</h2>
+            <p style="margin-bottom: 30px;">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
+            <div class="contact-icons">
+               
+                <a href="https://github.com/dharaninaripeddi-cell" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/dharani-naripeddi-16b6b1321" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Naripeddi Dharani | Designed for ShadowFox Internship</p>
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+    // Typing Animation
+    const roles = ["B.Tech IT Student", "ShadowFox Intern", "Aspiring Software Developer"];
+    let count = 0; let index = 0; let currentText = ""; let letter = "";
+
+    (function type() {
+        if (count === roles.length) count = 0;
+        currentText = roles[count];
+        letter = currentText.slice(0, ++index);
+        document.getElementById("typing").textContent = letter;
+
+        if (letter.length === currentText.length) {
+            count++;
+            index = 0;
+            setTimeout(type, 2000);
+        } else {
+            setTimeout(type, 100);
+        }
+    })();
+
+    // Scroll Reveal Animation
+    const observerOptions = { threshold: 0.2 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Trigger progress bars if they exist in this section
+                const bars = entry.target.querySelectorAll('.progress-fill');
+                bars.forEach(bar => bar.style.width = bar.getAttribute('data-level'));
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(section => {
+        observer.observe(section);
+    });
+</script>
+
+</body>
+</html>
